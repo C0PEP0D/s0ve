@@ -35,7 +35,7 @@ This library is used as part of [SHELD0N](https://github.com/C0PEP0D/sheld0n), a
 Start by cloning this repository.
 
 ```sh
-$ git clone https://gitlab.com/rmonthil/c0pep0d.git
+$ git clone https://github.com/C0PEP0D/s0ve.git
 ```
 
 ### Examples
