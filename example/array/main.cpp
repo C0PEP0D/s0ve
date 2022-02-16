@@ -7,5 +7,5 @@
 
 int main () {
     std::vector<double> data(10, 1.0);
-    s0ve::saveArrayDouble(std::string("../data/save.csv"), data, std::string(","));
+    s0ve::saveDouble(std::string("../data/save.csv"), data.data(), data.size());
 }
