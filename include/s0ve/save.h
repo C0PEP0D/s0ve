@@ -40,18 +40,23 @@ void saveMapToCsv(const std::string& fileName, const TypeMap& data, const std::s
 		file << (*it).first << delimiter;
 	}
 	file << (*endIt).first << "\n";
+	// // data vector
+	// const std::size_t n = (*data.begin()).second.size();
+	// for (unsigned int i = 0; i < n - 1; i++) {
+	// 	for(auto it = data.begin(); it != endIt; it++) {
+	// 		file << converter((*it).second[i]) << delimiter;
+	// 	}
+	// 	file << converter((*endIt).second[i]) << "\n";
+	// }
+	// for(auto it = data.begin(); it != endIt; it++) {
+	// 	file << converter((*it).second[n - 1]) << delimiter;
+	// }
+	// file << converter((*endIt).second[n - 1]);
 	// data
-	const std::size_t n = (*data.begin()).second.size();
-	for (unsigned int i = 0; i < n - 1; i++) {
-		for(auto it = data.begin(); it != endIt; it++) {
-			file << converter((*it).second[i]) << delimiter;
-		}
-		file << converter((*endIt).second[i]) << "\n";
-	}
 	for(auto it = data.begin(); it != endIt; it++) {
-		file << converter((*it).second[n - 1]) << delimiter;
+		file << converter((*it).second) << delimiter;
 	}
-	file << converter((*endIt).second[n - 1]);
+	file << converter((*endIt).second);
 	// close file
 	file.close();
 }
