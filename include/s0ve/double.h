@@ -6,8 +6,6 @@
 #include <string> // string, to_string
 // include modules
 #include "s0ve/save.h"
-#include "s0ve/array.h"
-#include "s0ve/csv.h"
 
 namespace s0ve {
 
@@ -19,18 +17,13 @@ class ConverterDouble : public Converter<double> {
 };
 
 
-void saveDouble(const std::string& fileName, const double& data) {
-    save(fileName, ConverterDouble(), data);
+void saveDouble(const std::string& fileName, const double* pData, const std::size_t n, const std::string& delimiter = "\n") {
+    save(fileName, pData, n, delimiter, ConverterDouble());
 }
 
-template<typename TypeArray>
-void saveArrayDouble(const std::string& fileName, const TypeArray& data, const std::string& delimiter) {
-    saveArray<ConverterDouble, TypeArray, double>(fileName, data, delimiter);
-}
-
-template<template<typename, typename...> class TypeMap, typename TypeArray>
-void saveMapToCsvDouble(const std::string& fileName, const TypeMap<std::string, TypeArray>& data, const std::string& delimiter, const std::string& headPrefix) {
-    saveMapToCsv<ConverterDouble, TypeMap, TypeArray, double>(fileName, data, delimiter, headPrefix);
+template<typename TypeMap>
+void saveMapToCsvDouble(const std::string& fileName, const TypeMap& data, const std::string& delimiter, const std::string& headPrefix) {
+    saveMapToCsv(fileName, data, delimiter, headPrefix, ConverterDouble());
 }
 
 }
