@@ -17,7 +17,7 @@ class ConverterDouble : public Converter<double> {
 };
 
 
-void saveDouble(const std::string& fileName, const double* pData, const std::size_t n, const std::string& delimiter = "\n") {
+inline void saveDouble(const std::string& fileName, const double* pData, const std::size_t n, const std::string& delimiter = "\n") {
     save(fileName, pData, n, delimiter, ConverterDouble());
 }
 
