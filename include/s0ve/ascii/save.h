@@ -1,5 +1,5 @@
-#ifndef S0VE_SAVE_H
-#define S0VE_SAVE_H
+#ifndef S0VE_ASCII_SAVE_H
+#define S0VE_ASCII_SAVE_H
 #pragma once
 
 // include std
@@ -8,6 +8,8 @@
 // include modules
 
 namespace s0ve {
+
+namespace ascii {
 
 template<typename TypeConverted>
 class Converter {
@@ -40,18 +42,6 @@ void saveMapToCsv(const std::string& fileName, const TypeMap& data, const std::s
 		file << (*it).first << delimiter;
 	}
 	file << (*endIt).first << "\n";
-	// // data vector
-	// const std::size_t n = (*data.begin()).second.size();
-	// for (unsigned int i = 0; i < n - 1; i++) {
-	// 	for(auto it = data.begin(); it != endIt; it++) {
-	// 		file << converter((*it).second[i]) << delimiter;
-	// 	}
-	// 	file << converter((*endIt).second[i]) << "\n";
-	// }
-	// for(auto it = data.begin(); it != endIt; it++) {
-	// 	file << converter((*it).second[n - 1]) << delimiter;
-	// }
-	// file << converter((*endIt).second[n - 1]);
 	// data
 	for(auto it = data.begin(); it != endIt; it++) {
 		file << converter((*it).second) << delimiter;
@@ -59,6 +49,8 @@ void saveMapToCsv(const std::string& fileName, const TypeMap& data, const std::s
 	file << converter((*endIt).second);
 	// close file
 	file.close();
+}
+
 }
 
 }

@@ -3,9 +3,9 @@
 #include <vector>
 #include <string>
 // Lib includes
-#include "s0ve/ascii/double.h"
+#include "s0ve/bin/save.h"
 
 int main () {
     std::vector<double> data(10, 1.0);
-    s0ve::ascii::saveDouble(std::string("../data/save.txt"), data.data(), data.size());
+    s0ve::bin::save(std::string("../data/save.bin"), data.data(), data.size());
 }
