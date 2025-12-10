@@ -37,16 +37,18 @@ void saveMapToCsv(const std::string& fileName, const TypeMap& data, const std::s
 	// header
 	file << headerPrefix;
 	auto endIt = data.end();
-	--endIt;
-	for(auto it = data.begin(); it != endIt; it++) {
-		file << (*it).first << delimiter;
+	if(data.begin() != endIt) {
+		--endIt;
+		for(auto it = data.begin(); it != endIt; it++) {
+			file << (*it).first << delimiter;
+		}
+		file << (*endIt).first << "\n";
+		// data
+		for(auto it = data.begin(); it != endIt; it++) {
+			file << converter((*it).second) << delimiter;
+		}
+		file << converter((*endIt).second);
 	}
-	file << (*endIt).first << "\n";
-	// data
-	for(auto it = data.begin(); it != endIt; it++) {
-		file << converter((*it).second) << delimiter;
-	}
-	file << converter((*endIt).second);
 	// close file
 	file.close();
 }
